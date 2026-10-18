@@ -1,0 +1,18 @@
+{
+    "name": "projeto/edumaker",
+    "description": "Site do maker",
+    "autoload": {
+        "psr-4": {
+            "Projeto\\Edumaker\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Murilo"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.7",
+        "phpmailer/phpmailer": "^7.1"
+    }
+}

@@ -1,0 +1,6 @@
+EDUMaker — como rodar (XAMPP)
+1. Copie esta pasta para htdocs e abra http://localhost/edumaker-site/
+2. Copie .env.exemplo para .env e preencha (banco PostgreSQL, e-mail, IP_HASH_KEY).
+3. Rode sql/schema.sql no banco (tabelas contato, visita_tecnica e demanda).
+Formulários: src/mensagem.php (RF01), src/agendar.php (RF02) e src/demanda.php (demandas).
+Todos enviam e-mail para MAIL_DESTINO (ou MAIL_USER, se vazio).
