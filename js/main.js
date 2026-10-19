@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* NAV */
   var nav = document.getElementById('navbar');
@@ -52,7 +51,7 @@
     ];
     var chips = [
       { x: 300, y: 160, w: 80, h: 70, c: 'b', l: 'g', t: 'EDUMAKER' },
-      { x: 1540, y: 160, w: 80, h: 70, c: 'g', l: 'b', t: 'FAB LAB' }
+      { x: 1540, y: 160, w: 80, h: 70, c: 'g', l: 'b', t: 'IFBA' }
     ];
 
     var traces = [], nodes = [], nodeMap = {};
@@ -264,9 +263,10 @@
     var rt;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(resize, 150); });
     /* Pausa quando o hero sai da tela (economia de CPU/bateria) */
+    running = true; start();
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { running = es[0].isIntersecting; if (running) start(); }).observe(hero);
-    } else { running = true; start(); }
+    }
   })();
 
   /* Reveal + contadores */
@@ -280,9 +280,8 @@
       if (!e.isIntersecting) return;
       var el = e.target, alvo = +el.dataset.target, ini = performance.now();
       cnt.unobserve(el);
-      if (reduce) { el.textContent = alvo; return; }
       (function step(t) {
-        var k = Math.min((t - ini) / 1600, 1);
+        var k = Math.min(Math.max(0, (t - ini) / 1600), 1);
         el.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 3)));
         if (k < 1) requestAnimationFrame(step);
       })(ini);
